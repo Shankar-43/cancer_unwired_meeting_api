@@ -22,6 +22,7 @@ const uid = new ShortUniqueId({ length: 10 });
 const dbFile = process.env.DB || "db.json";
 const serverPort = process.env.REACT_APP_JSON_SERVER_PORT || 9090;
 const staticDirectoryName = process.env.STATIC_FILES || "server-files";
+const sendGridApis = process.env.SENDGRID_API_SERECT_KEY;
 
 const file = path.join(__dirname, dbFile);
 const adapter = new JSONFileSync(file);
@@ -198,7 +199,7 @@ server.use(router);
 
 let nodeEnv = process.env.NODE_ENV || "production";
 
-sgMail.setApiKey(process.env.SENDGRID_API_SERECT_KEY);
+sgMail.setApiKey(sendGridApis);
 server.use(cors());
 
 server.post("/sendmail", (req, res) => {
