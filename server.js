@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
+import sgMail from "@sendgrid/mail";
 
 import jsonServer from "json-server";
 import path from "path";
