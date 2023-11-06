@@ -11,7 +11,8 @@ import jwt from "jsonwebtoken";
 import { LowSync } from "lowdb";
 import { JSONFileSync } from "lowdb/node";
 
-const cors = require("cors");
+import cors from "cors";
+
 import protectedRoutesConfig from "./serverConfig.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -46,7 +47,7 @@ server.use(jsonServer.bodyParser);
 
 // config
 const protectedRoutes = protectedRoutesConfig.protectedRoutes;
-
+server.use(cors());
 // Authorization logic
 server.use((req, res, next) => {
   let NeedsAuthorization = false;
